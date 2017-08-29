@@ -4,7 +4,7 @@ import React from 'react'
 const GetImageButton = (props) => {
 
     return (
-      <div>
+      <div className="card-block ">
         <button className="btn btn-lg" onClick={props.onClick} type="submit" >Submit</button>
       </div>
     );

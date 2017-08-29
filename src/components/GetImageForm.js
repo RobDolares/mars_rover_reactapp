@@ -35,10 +35,10 @@ export default class GetImageForm extends Component {
     }).then(data => {
       console.log(data)
       this.setState({
-        rover: "Curiosity",
-        camera: "FHAZ",
+        rover: this.state.rover,
+        camera: this.state.camera,
         images: data.photos,
-        sol: ""
+        sol: this.state.sol
       });
     })
   }
@@ -59,26 +59,45 @@ export default class GetImageForm extends Component {
   }
 
   render() {
+    //***** Inline Styles *****//
+    let categoryStyle = {
+      "fontFamily" : "Raleway",
+      "fontSize" : "1.1rem",
+      "padding" : "5px",
+      "color" : "white"
+    }
     return (
       <div>
-        <form>
-          <label htmlFor="rover">Rover</label>
-          <select onChange={this.handleRover} id="rover" value={this.state.value}>
-            <option value="Curiosity">Curiosity</option>
-            <option value="Opportunity">Opportunity</option>
-            <option value="Spirit">Spirt</option>
-          </select>
-          <label htmlFor="camera">Camera Type</label>
-          <select onChange={this.handleCamera} id="rover" value={this.state.value}>
-            <option value="fhaz">FHAZ (Front Hazard)</option>
-            <option value="rhaz">RHAZ (Rear Hazard)</option>
-            <option value="navcam">NAVCAM (Navigation Cam)</option>
-          </select>
-          <label htmlFor="sol">Martian Sol: 1000-2000</label>
-          <input type="number" onChange={this.handleSol} max="2000" min="1000" value={this.state.value}/>
+        <form className="row" >
+          <div className="col-md-4 col-xs-12">
+            <label style={categoryStyle} htmlFor="rover">Rover</label>
+            <select onChange={this.handleRover} id="rover" value={this.state.value}>
+              <option value="Curiosity">Curiosity</option>
+              <option value="Opportunity">Opportunity</option>
+              <option value="Spirit">Spirit</option>
+            </select>
+          </div>
+          <div className="col-md-4 col-xs-12">
+            <label style={categoryStyle} htmlFor="camera">Camera Type</label>
+            <select onChange={this.handleCamera} id="rover" value={this.state.value}>
+              <option value="fhaz">FHAZ (Front Hazard)</option>
+              <option value="rhaz">RHAZ (Rear Hazard)</option>
+              <option value="navcam">NAVCAM (Navigation Cam)</option>
+            </select>
+          </div>
+          <div className="col-md-4 col-xs-12">
+            <label style={categoryStyle} htmlFor="sol">Martian Sol: 1000-2000</label>
+            <input type="number" onChange={this.handleSol} max="2000" min="1000" value={this.state.value}/>
+          </div>
+
+
+
         </form>
-        <GetImageButton onClick={this.fetchRoverImage}/>
-        <ImageDisplay images={this.state.images}/>
+        <div>
+          <GetImageButton className="row" onClick={this.fetchRoverImage}/>
+          <h2 className="col-xs-12">{this.state.rover}</h2>
+          <ImageDisplay images={this.state.images}/>
+        </div>
       </div>
     );
   }
