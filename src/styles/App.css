@@ -38,3 +38,19 @@ h2 {
   font-size: 4em;
   color: white;
 }
+
+h3 {
+  color: rgba(255,255,255,0.6);
+}
+
+li {
+  display: inline;
+  margin: 0px 15px;
+  color: rgba(0,0,0,0.9);
+}
+
+#startList {
+  text-align: center;
+  list-style: none;
+  font-size: 1.2em;
+}
